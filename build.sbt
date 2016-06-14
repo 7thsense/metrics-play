@@ -2,7 +2,7 @@ organization:= "com.kenshoo"
 
 name := "metrics-play"
 
-version := "2.6.2_0.5.1-SNAPSHOT"
+version := "2.6.2_0.5.1.0.ss.0"
 
 scalaVersion := "2.12.2"
 
@@ -33,16 +33,10 @@ libraryDependencies ++= Seq(
     "org.specs2" %% "specs2" % "2.4.17" % "test"
 )
 
+licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html"))
+bintrayRepository := "maven"
+bintrayOrganization := Some("7thsense")
 publishMavenStyle := true
-
-publishTo := Some(
-  if (isSnapshot.value)
-    Opts.resolver.sonatypeSnapshots
-  else
-    Opts.resolver.sonatypeStaging
-)
-
-credentials += Credentials(Path.userHome / ".m2" / ".credentials")
 
 pomIncludeRepository := { _ => false }
 
