@@ -8,6 +8,8 @@ scalaVersion := "2.12.2"
 
 crossScalaVersions := Seq("2.12.2")
 
+scalacOptions := Seq("-unchecked", "-deprecation")
+
 testOptions in Test += Tests.Argument("junitxml", "console")
 
 parallelExecution in Test := false
