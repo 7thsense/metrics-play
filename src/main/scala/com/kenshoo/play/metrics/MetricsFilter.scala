@@ -24,7 +24,6 @@ import com.codahale.metrics._
 import com.codahale.metrics.MetricRegistry.name
 
 import scala.concurrent.{ExecutionContext, Future}
-g
 
 trait MetricsFilter extends Filter
 
