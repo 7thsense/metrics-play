@@ -139,7 +139,7 @@ instead of `com.kenshoo.play.metrics.PlayModule`
 
 ## Changes
 
-* 2.6.2_0.5.1 - Upgrade to play 2.6 and Scala 2.12
+* 2.6.2_0.5.1 - Upgrade to play 2.6 and Scala 2.12. Migration: If you get errors like "No configuration setting found ..." when building fat JARs, check your merge strategy for reference.conf. 
 * 2.4.0_0.4.0 - Re-implement as Play Module
 * 2.4.0_0.3.0 - Upgrade to play 2.4, metrics 3.1.2
 * 2.3.0_0.2.1 - Breaking Change! prefix jvm metric names to standardize with dropwizard

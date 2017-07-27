@@ -21,11 +21,12 @@ import org.specs2.mutable.Specification
 import play.api.Application
 import play.api.http.HttpFilters
 import play.api.inject.guice.GuiceApplicationBuilder
-import play.api.mvc.{Result, Action}
+import play.api.mvc._
 import play.api.routing.Router
 import play.api.test._
 import play.api.test.Helpers._
 import com.codahale.metrics.MetricRegistry
+
 import scala.concurrent.duration.Duration
 import scala.concurrent.Await
 import play.api.inject.bind
@@ -34,6 +35,8 @@ import play.api.mvc.Results._
 // inspired by Play's SecurityHeadersFilterSpec.scala
 object MetricsFilterSpec extends Specification {
   sequential
+
+  val ec = scala.concurrent.ExecutionContext.Implicits.global
 
   class Filters @Inject() (metricsFilter: MetricsFilter) extends HttpFilters {
     def filters = Seq(metricsFilter)
@@ -44,7 +47,7 @@ object MetricsFilterSpec extends Specification {
     lazy val application = new GuiceApplicationBuilder()
       .overrides(
         bind[Router].to(Router.from {
-          case _ => Action(result)
+          case _ => DefaultActionBuilder(BodyParsers.utils.ignore(AnyContentAsEmpty: AnyContent))(ec) { result }
         }),
         bind[HttpFilters].to[Filters],
         bind[MetricsFilter].to[MetricsFilterImpl],
