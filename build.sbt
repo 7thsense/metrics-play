@@ -2,11 +2,11 @@ organization:= "com.kenshoo"
 
 name := "metrics-play"
 
-version := "2.6.2_0.5.1"
+version := "2.6.2_0.5.1-SNAPSHOT"
 
 scalaVersion := "2.12.2"
 
-crossScalaVersions := Seq("2.12.2")
+crossScalaVersions := Seq("2.11.11", "2.12.2")
 
 scalacOptions := Seq("-unchecked", "-deprecation")
 
